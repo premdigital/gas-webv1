@@ -1,0 +1,6 @@
+{
+  "name": "PREMDIGITAL",
+  "description": "Premium applications and secure VPN tunneling solutions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
