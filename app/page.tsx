@@ -126,7 +126,7 @@ export default function Home() {
                     </p>
                     
                     <a 
-                      href="https://wa.me/6283813356675" 
+                      href="https://wa.me/6283188458876?text=menu" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="flex items-center gap-4 w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 hover:border-green-500 hover:bg-green-50 dark:hover:bg-green-900/20 transition-all group"
@@ -142,7 +142,7 @@ export default function Home() {
                     </a>
                     
                     <a 
-                      href="https://t.me/T0M15" 
+                      href="https://t.me/premdigital_bot" 
                       target="_blank" 
                       rel="noopener noreferrer"
                       className="flex items-center gap-4 w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 hover:border-sky-500 hover:bg-sky-50 dark:hover:bg-sky-900/20 transition-all group"
