@@ -39,7 +39,7 @@ export async function POST(req: NextRequest) {
     contents.push({ role: 'user', parts: [{ text: message }] });
 
     const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash",
+      model: "gemini-3.6-flash",
       contents: contents,
       config: {
         systemInstruction: SYSTEM_PROMPT,
@@ -51,16 +51,9 @@ export async function POST(req: NextRequest) {
   } catch (error: any) {
     console.error("Chat API Error:", error);
     
-    // Check if it's a permission/API key error
-    if (error?.message?.includes("PERMISSION_DENIED") || error?.status === 403) {
-      return NextResponse.json({ 
-        text: "Maaf, fitur chat saat ini belum terkonfigurasi dengan API Key yang valid. Silakan langsung hubungi Admin via [WhatsApp](https://wa.me/6283188458876?text=menu) atau [Telegram](https://t.me/premdigital_bot)." 
-      });
-    }
-
-    return NextResponse.json(
-      { error: "Gagal memproses pesan. Silakan hubungi admin secara langsung.", details: error.message },
-      { status: 500 }
-    );
+    // Always return a graceful message with the admin links so the UI doesn't break
+    return NextResponse.json({ 
+      text: "Maaf, saat ini sistem AI kami sedang tidak tersedia atau dalam perbaikan. Silakan langsung hubungi Admin via [WhatsApp](https://wa.me/6283188458876?text=menu) atau [Telegram](https://t.me/premdigital_bot) untuk bantuan lebih lanjut." 
+    });
   }
 }
