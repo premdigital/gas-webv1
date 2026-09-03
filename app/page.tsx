@@ -206,14 +206,19 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 py-12" id="footer">
-        <div className="mx-auto max-w-7xl px-6 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-2 font-[family-name:var(--font-nunito)] text-lg font-black tracking-tight">
-            <span className="text-[#ff99cc]">PREM</span><span className="text-[#66ccff]">DIGITAL</span>
+        <div className="mx-auto max-w-7xl px-6 flex flex-col items-center justify-between gap-6 md:flex-row">
+          <div className="flex flex-col items-center md:items-start gap-2">
+            <div className="flex items-center gap-2 font-[family-name:var(--font-nunito)] text-lg font-black tracking-tight">
+              <span className="text-[#ff99cc]">PREM</span><span className="text-[#66ccff]">DIGITAL</span>
+            </div>
+            <p className="text-sm text-slate-500 dark:text-slate-500 text-center md:text-left">
+              &copy; {new Date().getFullYear()} PREMDIGITAL. All rights reserved.
+            </p>
           </div>
-          <p className="text-sm text-slate-500 dark:text-slate-500">
-            &copy; {new Date().getFullYear()} PREMDIGITAL. All rights reserved.
-          </p>
-          <div className="hidden">
+          
+          <div className="flex flex-wrap justify-center gap-6 text-sm font-medium text-slate-500 dark:text-slate-400">
+            <Link href="/terms" className="hover:text-slate-900 dark:hover:text-white transition-colors">Syarat & Ketentuan</Link>
+            <Link href="/privacy" className="hover:text-slate-900 dark:hover:text-white transition-colors">Kebijakan Privasi</Link>
           </div>
         </div>
       </footer>

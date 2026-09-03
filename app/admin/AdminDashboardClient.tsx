@@ -27,6 +27,7 @@ export default function AdminDashboardClient() {
   };
 
   const [formData, setFormData] = useState<Product>(defaultProduct);
+  const [featuresInput, setFeaturesInput] = useState<string>('');
 
   const fetchProducts = async () => {
     setIsLoading(true);
@@ -44,6 +45,7 @@ export default function AdminDashboardClient() {
   };
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     fetchProducts();
   }, []);
 
@@ -64,9 +66,11 @@ export default function AdminDashboardClient() {
     if (product) {
       setEditingProduct(product);
       setFormData(product);
+      setFeaturesInput(product.features ? product.features.join(', ') : '');
     } else {
       setEditingProduct(null);
       setFormData(defaultProduct);
+      setFeaturesInput('');
     }
     setIsModalOpen(true);
   };
@@ -87,6 +91,8 @@ export default function AdminDashboardClient() {
     try {
       const dataToSave = { ...formData };
       if (!dataToSave.originalPrice) dataToSave.originalPrice = null;
+      
+      dataToSave.features = featuresInput.split(',').map(s => s.trim()).filter(Boolean);
       
       if (editingProduct?.id) {
         await updateDoc(doc(db, 'products', editingProduct.id), dataToSave as any);
@@ -283,8 +289,8 @@ export default function AdminDashboardClient() {
                 <label className="block text-sm font-bold text-slate-700 dark:text-slate-300 mb-1">Fitur (Pisahkan dengan koma)</label>
                 <textarea 
                   required 
-                  value={formData.features.join(', ')} 
-                  onChange={e => setFormData({...formData, features: e.target.value.split(',').map(s => s.trim()).filter(Boolean)})}
+                  value={featuresInput} 
+                  onChange={e => setFeaturesInput(e.target.value)}
                   className="w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 p-3 text-slate-900 dark:text-white min-h-[100px]"
                   placeholder="Ultra HD (4K), Bisa 4 Layar, Tanpa Iklan..."
                 />

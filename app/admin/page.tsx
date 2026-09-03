@@ -16,8 +16,10 @@ export default function AdminDashboard() {
     // Mengecek apakah sudah ada sesi login aktif
     const authStatus = sessionStorage.getItem('isAdminAuthenticated');
     if (authStatus === 'true') {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsAuthenticated(true);
     }
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsChecking(false);
   }, []);
 
